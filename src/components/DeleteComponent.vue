@@ -26,7 +26,7 @@ export default {
       // console.log(this.token);
       const config = {
         method: "post",
-        url: `http://demo-api-vue.sanbercloud.com/api/v2/blog/${id}`,
+        url: `https://demo-api-vue.sanbercloud.com/api/v2/blog/${id}`,
         params: {
           _method: "DELETE",
         },

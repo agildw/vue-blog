@@ -26,7 +26,7 @@
   </v-container>
 </template>
 <script>
-import { mapGetters } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 export default {
   name: "post",
   data: () => ({
@@ -43,7 +43,7 @@ export default {
     submit() {
       this.axios
         .post(
-          "http://demo-api-vue.sanbercloud.com/api/v2/blog",
+          "https://demo-api-vue.sanbercloud.com/api/v2/blog",
           {
             title: this.title,
             description: this.description,
@@ -55,17 +55,28 @@ export default {
           }
         )
         .then((response) => {
-          // const { idBlog } = response.data.blog.id;
           console.log(response.data.blog.id);
           this.idBlog = response.data.blog.id;
-          // console.log(response.data);
+          this.setAlert({
+            status: true,
+            color: "success",
+            text: "Berhasil diupload",
+          });
         })
         .catch((error) => {
           console.log(error.response);
+          this.setAlert({
+            status: true,
+            color: "error",
+            text: "gagal upload",
+          });
           throw error;
         });
       console.log(this.token);
     },
+    ...mapActions({
+      setAlert: "alert/set",
+    }),
   },
 };
 </script>

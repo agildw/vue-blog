@@ -42,7 +42,6 @@
 <script>
 // import delete from '../components/Delete.vue';
 import deleteComponent from "../components/DeleteComponent.vue";
-// import EditComponent from "../components/EditComponent.vue";
 export default {
   data: () => ({
     baseUrl: "https://demo-api-vue.sanbercloud.com",
@@ -51,8 +50,6 @@ export default {
   }),
   components: {
     "delete-component": deleteComponent,
-    // "edit-component": editComponent,
-    // EditComponent,
   },
 
   methods: {
