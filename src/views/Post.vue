@@ -1,6 +1,6 @@
 <template>
   <v-container fluid>
-    <h3>New Post</h3>
+    <h3>Create a blog</h3>
     <br />
     <v-text-field
       label="judul"

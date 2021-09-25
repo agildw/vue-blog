@@ -1,13 +1,15 @@
 <template>
   <div>
-    <!-- <edit-component></edit-component> -->
-    <v-btn
-      small
-      :to="{ name: 'EditBlog', params: { id: blogId } }"
-      color="primary"
-      >EDIT</v-btn
-    >
-    <delete-component :blogId="blogId"></delete-component>
+    <div v-if="!guest">
+      <v-btn
+        small
+        :to="{ name: 'EditBlog', params: { id: blogId } }"
+        color="primary"
+        >EDIT</v-btn
+      >
+      <delete-component :blogId="blogId"></delete-component>
+    </div>
+
     <v-card v-if="blog.id">
       <v-img
         :src="
@@ -40,6 +42,7 @@
   </div>
 </template>
 <script>
+import { mapGetters } from "vuex";
 // import delete from '../components/Delete.vue';
 import deleteComponent from "../components/DeleteComponent.vue";
 export default {
@@ -51,7 +54,11 @@ export default {
   components: {
     "delete-component": deleteComponent,
   },
-
+  computed: {
+    ...mapGetters({
+      guest: "auth/guest",
+    }),
+  },
   methods: {
     go() {
       let { id } = this.$route.params;

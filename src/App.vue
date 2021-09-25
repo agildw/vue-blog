@@ -46,6 +46,13 @@
             <v-list-item-title>{{ item.title }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
+
+        <v-list-item :to="{ name: 'post' }" v-if="!guest">
+          <v-list-item-icon>
+            <v-icon left>mdi-post</v-icon>
+          </v-list-item-icon>
+          <v-list item-title>New Blog</v-list>
+        </v-list-item>
       </v-list>
       <template v-slot:append v-if="!guest">
         <div class="pa-2">
@@ -90,7 +97,7 @@ export default {
     menus: [
       { title: "Home", icon: "mdi-home", route: "/" },
       { title: "Blogs", icon: "mdi-note", route: "/blogs" },
-      { title: "Post", icon: "mdi-post", route: "/post" },
+      // { title: "New Blog", icon: "mdi-post", route: "/create" },
     ],
     baseUrl: "https://demo-api-vue.sanbercloud.com",
     // guest: true,

@@ -50,7 +50,7 @@ export default {
     getBlog() {
       this.idBlog = this.$route.params.id;
       this.axios
-        .get(`http://demo-api-vue.sanbercloud.com/api/v2/blog/${this.idBlog}`)
+        .get(`https://demo-api-vue.sanbercloud.com/api/v2/blog/${this.idBlog}`)
         .then((response) => {
           this.judul = response.data.blog.title;
           this.description = response.data.blog.description;
