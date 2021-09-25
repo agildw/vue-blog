@@ -1,5 +1,7 @@
 <template>
   <v-container fluid>
+    <h3>New Post</h3>
+    <br />
     <v-text-field
       label="judul"
       prepend-icon="mdi-format-title"
@@ -14,16 +16,12 @@
       v-model.lazy="description"
     >
     </v-textarea>
-    <!-- <v-btn color="success" @click="submit">submit</v-btn> -->
-    <!-- <router-link
-      :to="{ name: 'About', params: { companyid: company.objectID } }"
-    >
-      Read More
-    </router-link> -->
-    <router-link :to="{ name: 'Blog', params: { id: idBlog } }">
-      <v-btn color="success" @click="submit">submit </v-btn>
-    </router-link>
-
+    <v-btn color="success" @click="submit">submit </v-btn>
+    <div v-if="idBlog != null">
+      <router-link :to="{ name: 'Blog', params: { id: idBlog } }">
+        <v-btn color="primary">Go to new post</v-btn>
+      </router-link>
+    </div>
     <router-view></router-view>
   </v-container>
 </template>
@@ -34,7 +32,7 @@ export default {
   data: () => ({
     title: "",
     description: "",
-    idBlog: 323,
+    idBlog: null,
   }),
   computed: {
     ...mapGetters({

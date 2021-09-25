@@ -44,7 +44,7 @@ export default {
           this.blogs = blogs.data;
           this.page = blogs.current_page;
           this.lengthPage = blogs.last_page;
-          this.perPage = blogs.per_page;
+          this.perPage = 7;
         })
         .catch((error) => {
           throw error;

@@ -1,7 +1,7 @@
 <template>
   <div>
     <router-link :to="{ name: 'Home' }">
-      <v-btn color="error" @click="deleteBlog(blogId)">Delete</v-btn>
+      <v-btn small color="error" @click="deleteBlog(blogId)">Delete</v-btn>
     </router-link>
     <router-view></router-view>
   </div>

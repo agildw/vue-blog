@@ -1,7 +1,12 @@
 <template>
   <div>
-    <v-btn color="primary">Edit</v-btn>
-    <!-- <v-btn color="error">Delete</v-btn><br /> -->
+    <!-- <edit-component></edit-component> -->
+    <v-btn
+      small
+      :to="{ name: 'EditBlog', params: { id: blogId } }"
+      color="primary"
+      >EDIT</v-btn
+    >
     <delete-component :blogId="blogId"></delete-component>
     <v-card v-if="blog.id">
       <v-img
@@ -37,14 +42,17 @@
 <script>
 // import delete from '../components/Delete.vue';
 import deleteComponent from "../components/DeleteComponent.vue";
+// import EditComponent from "../components/EditComponent.vue";
 export default {
   data: () => ({
     baseUrl: "https://demo-api-vue.sanbercloud.com",
     blog: {},
-    blogId: null,
+    blogId: false,
   }),
   components: {
     "delete-component": deleteComponent,
+    // "edit-component": editComponent,
+    // EditComponent,
   },
 
   methods: {

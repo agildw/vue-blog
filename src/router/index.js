@@ -18,11 +18,16 @@ const routes = [
   {
     path: '/blog/:id',
     name: 'Blog',
-    component: () => import(/* webpackChunkName: "blogs" */ '../views/Blog.vue')
+    component: () => import(/* webpackChunkName: "blogs" */ '../views/Blog.vue'),
   },
   {
     path: '/post', name: 'post', component: () => import('../views/Post.vue')
   },
+  {
+    path: '/editblog/:id',
+    name: 'EditBlog',
+    component: () => import('../views/EditBlog.vue')
+  }
   // {
   //   path: '/blog/:id',
   //   props: true,
