@@ -3,25 +3,29 @@
     <h3>Create a blog</h3>
     <br />
     <v-text-field
-      label="judul"
+      label="Title"
       prepend-icon="mdi-format-title"
       v-model.lazy="title"
+      color="success"
     ></v-text-field>
     <v-textarea
       name="deskripsi"
-      label="deskripsi"
+      label="Description"
       auto-grow
       prepend-inner-icon="mdi-note"
       rows="3"
       v-model.lazy="description"
+      color="success"
     >
     </v-textarea>
-    <v-btn color="success" @click="submit">submit </v-btn>
-    <div v-if="idBlog != null">
+    <v-btn color="success" @click="submit" class="float-left mr-1"
+      >submit
+    </v-btn>
+    <!-- <div v-if="idBlog != null">
       <router-link :to="{ name: 'Blog', params: { id: idBlog } }">
-        <v-btn color="primary">Go to new post</v-btn>
+        <v-btn color="primary">Go to blog</v-btn>
       </router-link>
-    </div>
+    </div> -->
     <router-view></router-view>
   </v-container>
 </template>
@@ -57,6 +61,7 @@ export default {
         .then((response) => {
           // console.log(response.data.blog.id);
           this.idBlog = response.data.blog.id;
+          this.$router.push({ name: "Blog", params: { id: this.idBlog } });
           this.setAlert({
             status: true,
             color: "success",

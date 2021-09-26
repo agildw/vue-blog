@@ -67,7 +67,7 @@
     <v-app-bar app color="success" dark dense>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
-      <v-toolbar-title>MyBLog</v-toolbar-title>
+      <v-toolbar-title>MyBlog</v-toolbar-title>
 
       <v-spacer></v-spacer>
     </v-app-bar>
@@ -81,7 +81,7 @@
         </v-slide-y-transition>
       </v-container>
     </v-main>
-    <v-footer app> MyBLog - VueJS </v-footer>
+    <v-footer app> MyBlog - Kelompok 18 </v-footer>
   </v-app>
 </template>
 

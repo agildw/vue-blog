@@ -4,12 +4,17 @@
       ><v-icon>mdi-arrow-left-bold</v-icon>Back</v-btn
     >
     <br />
-    <v-file-input label="masukkan foto" v-model="imageFile"></v-file-input>
+    <v-file-input
+      label="masukkan foto"
+      v-model="imageFile"
+      color="success"
+    ></v-file-input>
     <!-- <v-btn color="success" small @click="submitPhoto">Update photo</v-btn> -->
     <v-text-field
       v-model="judul"
       label="judul"
       prepend-icon="mdi-format-title"
+      color="success"
     ></v-text-field>
     <v-textarea
       name="deskripsi"
@@ -18,6 +23,7 @@
       prepend-inner-icon="mdi-note"
       rows="3"
       v-model="description"
+      color="success"
     >
     </v-textarea>
     <v-btn color="success" @click="submitData">Submit</v-btn>
@@ -71,6 +77,7 @@ export default {
         )
         .then((response) => {
           console.log(response.data);
+          // this.$router.push({ name: "Blog", params: { id: this.idBlog } });
           this.setAlert({
             status: true,
             color: "success",
@@ -88,10 +95,7 @@ export default {
         });
     },
     submitPhoto() {
-      // console.log(this.$refs.photo.files);
       const formData = new FormData();
-      // let file = this.$refs.photo.files[0];
-      // console.log(this.imageFile);
       formData.append("photo", this.imageFile);
       const config = {
         method: "POST",
@@ -105,13 +109,10 @@ export default {
       this.axios(config)
         .then((response) => {
           console.log(response.data);
-          // console.log(this.imageFile);
         })
         .catch((error) => {
           throw error;
         });
-      // console.log("clicked");
-      // console.log(this.$refs.image);
     },
   },
   created() {

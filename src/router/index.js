@@ -2,7 +2,9 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 
+
 Vue.use(VueRouter)
+
 
 const routes = [
   {
@@ -13,33 +15,29 @@ const routes = [
   {
     path: '/blogs',
     name: 'Blogs',
-    component: () => import(/* webpackChunkName: "blogs" */ '../views/Blogs.vue')
+    component: () => import('../views/Blogs.vue')
   },
   {
     path: '/blog/:id',
     name: 'Blog',
-    component: () => import(/* webpackChunkName: "blogs" */ '../views/Blog.vue'),
+    component: () => import('../views/Blog.vue'),
   },
   {
     path: '/create', name: 'post', component: () => import('../views/Post.vue')
   },
   {
-    path: '/editblog/:id',
+    path: '/edit/:id',
     name: 'EditBlog',
     component: () => import('../views/EditBlog.vue')
-  }
-  // {
-  //   path: '/blog/:id',
-  //   props: true,
-  //   name: 'Blogid',
-  //   component: () => import('../views/Post.vue')
-  // }
+  },
+  { path: '*', redirect: '/' }
 ]
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes
+  routes,
+
 })
 
 export default router

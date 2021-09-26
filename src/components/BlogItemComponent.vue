@@ -17,7 +17,7 @@
         <v-progress-linear color="blue-grey" height="7"> </v-progress-linear>
       </v-card-actions>
       <v-card-actions>
-        <span>{{ blog.title.substring(0, 15) }}...</span>
+        <span>{{ blog.description.substring(0, 15) }}...</span>
       </v-card-actions>
     </v-card>
   </v-flex>

@@ -1,10 +1,17 @@
 <template>
   <div>
-    <div v-if="!guest">
+    <!-- <div v-if="blogId == false" justify-center>
+      <h3>Blog not found</h3>
+      <v-btn :to="{ name: 'Home' }" color="error" class="justify-center"
+        >Back</v-btn
+      >
+    </div> -->
+    <div v-if="!guest && blogId != false">
       <v-btn
         small
         :to="{ name: 'EditBlog', params: { id: blogId } }"
         color="primary"
+        class="float-left mx-1 mb-2"
         >EDIT</v-btn
       >
       <delete-component :blogId="blogId"></delete-component>
@@ -74,6 +81,8 @@ export default {
           this.blog = blog;
         })
         .catch((error) => {
+          this.$router.push({ name: "Home" });
+          alert("blog not found");
           throw error;
         });
     },

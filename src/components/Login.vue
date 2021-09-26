@@ -14,6 +14,7 @@
           label="E-Mail"
           required
           append-icon="mdi-email"
+          color="success"
         ></v-text-field>
         <v-text-field
           v-model="password"
@@ -22,6 +23,7 @@
           label="Password"
           counter
           @click:append="showPassword = !showPassword"
+          color="success"
         ></v-text-field>
         <div class="text-xs-center">
           <v-btn color="success" @click="submit">Login</v-btn>

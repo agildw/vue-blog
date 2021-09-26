@@ -13,6 +13,7 @@
           show-size
           truncate-length="15"
           v-model="imageFile"
+          color="success"
         ></v-file-input>
         <!-- <input type="file" name="photo" ref="photo" style="margin: 10px 0" /> -->
         <v-text-field
@@ -20,12 +21,14 @@
           label="Name"
           required
           append-icon="mdi-name"
+          color="success"
         ></v-text-field>
         <v-text-field
           v-model="email"
           label="E-Mail"
           required
           append-icon="mdi-email"
+          color="success"
         ></v-text-field>
         <v-text-field
           v-model="password"
@@ -34,6 +37,7 @@
           label="Password"
           counter
           @click:append="showPassword = !showPassword"
+          color="success"
         ></v-text-field>
         <div class="text-xs-center">
           <v-btn color="success" @click="submit">Register</v-btn>
@@ -59,7 +63,7 @@ export default {
   methods: {
     ...mapActions({
       setAlert: "alert/set",
-      setToken: "auth/setToken",
+      // setToken: "auth/setToken",
     }),
     close() {
       this.$emit("closed", false);
