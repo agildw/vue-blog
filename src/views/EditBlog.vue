@@ -66,7 +66,7 @@ export default {
       }
       this.axios
         .post(
-          `http://demo-api-vue.sanbercloud.com/api/v2/blog/${this.idBlog}?_method=PUT`,
+          `https://demo-api-vue.sanbercloud.com/api/v2/blog/${this.idBlog}?_method=PUT`,
           {
             title: this.judul,
             description: this.description,

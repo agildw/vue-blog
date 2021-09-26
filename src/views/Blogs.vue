@@ -13,6 +13,7 @@
       @input="go"
       :length="lengthPage"
       :total-visible="perPage"
+      color="success"
     >
     </v-pagination>
   </v-container>
