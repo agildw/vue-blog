@@ -52,6 +52,9 @@ export default {
       this.axios
         .get(`https://demo-api-vue.sanbercloud.com/api/v2/blog/${this.idBlog}`)
         .then((response) => {
+          if (response.data.blog === null) {
+            this.$router.push({ name: "Home" });
+          }
           this.judul = response.data.blog.title;
           this.description = response.data.blog.description;
         })
