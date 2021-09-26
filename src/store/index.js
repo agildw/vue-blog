@@ -6,7 +6,7 @@ import auth from './auth'
 import VuexPersists from 'vuex-persist'
 
 const VuexPersist = new VuexPersists({
-    key: 'agilsy',
+    key: 'authkey',
     storage: localStorage
 })
 Vue.use(Vuex)
