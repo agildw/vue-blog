@@ -55,7 +55,7 @@ export default {
           }
         )
         .then((response) => {
-          console.log(response.data.blog.id);
+          // console.log(response.data.blog.id);
           this.idBlog = response.data.blog.id;
           this.setAlert({
             status: true,
@@ -72,7 +72,7 @@ export default {
           });
           throw error;
         });
-      console.log(this.token);
+      // console.log(this.token);
     },
     ...mapActions({
       setAlert: "alert/set",

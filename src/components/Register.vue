@@ -9,13 +9,12 @@
     <v-divider></v-divider>
     <v-container fluid>
       <v-form ref="form">
-        <!-- <v-file-input
+        <v-file-input
           show-size
           truncate-length="15"
-          ref="photo"
-          name="photo"
-        ></v-file-input> -->
-        <input type="file" name="photo" ref="photo" style="margin: 10px 0" />
+          v-model="imageFile"
+        ></v-file-input>
+        <!-- <input type="file" name="photo" ref="photo" style="margin: 10px 0" /> -->
         <v-text-field
           v-model="name"
           label="Name"
@@ -53,7 +52,7 @@ export default {
       showPassword: false,
       password: "",
       baseUrl: "https://demo-api-vue.sanbercloud.com",
-      files: null,
+      imageFile: null,
       name: "",
     };
   },
@@ -67,13 +66,15 @@ export default {
     },
     submit() {
       const formData = new FormData();
-      console.log(this.$refs.photo.files);
+      // console.log(this.$refs.photo.files);
+      console.log(this.imageFile);
       formData.append("email", this.email);
       formData.append("password", this.password);
       formData.append("name", this.name);
       console.log(this.name);
-      // formData.append("photo_profile", this.files.File);
-      formData.append("photo_profile", this.$refs.photo.files[0]);
+      formData.append("photo_profile", this.imageFile);
+      // formData.append("photo_profile", this.$refs.photo.files[0]);
+
       const config = {
         method: "post",
         url: this.baseUrl + "/api/v2/auth/register",

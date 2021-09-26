@@ -3,18 +3,9 @@
     <v-btn small plain :to="{ name: 'Blog', params: { id: idBlog } }"
       ><v-icon>mdi-arrow-left-bold</v-icon>Back</v-btn
     >
-    <!-- <v-file-input
-      chips
-      truncate-length="15"
-      ref="image"
-      v-model="imageFile"
-      label="select image"
-      accept="image/"
-    ></v-file-input> -->
     <br />
-    <input type="file" name="photo" ref="photo" style="margin: 10px 0" /><br />
-    <v-btn color="success" small @click="submitPhoto">Update photo</v-btn>
-    <br /><br />
+    <v-file-input label="masukkan foto" v-model="imageFile"></v-file-input>
+    <!-- <v-btn color="success" small @click="submitPhoto">Update photo</v-btn> -->
     <v-text-field
       v-model="judul"
       label="judul"
@@ -33,7 +24,7 @@
   </v-container>
 </template>
 <script>
-import { mapGetters } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 export default {
   data: () => ({
     judul: "",
@@ -47,6 +38,9 @@ export default {
     }),
   },
   methods: {
+    ...mapActions({
+      setAlert: "alert/set",
+    }),
     getBlog() {
       this.idBlog = this.$route.params.id;
       this.axios
@@ -60,6 +54,10 @@ export default {
         });
     },
     submitData() {
+      console.log("clicked");
+      if (this.imageFile) {
+        this.submitPhoto();
+      }
       this.axios
         .post(
           `http://demo-api-vue.sanbercloud.com/api/v2/blog/${this.idBlog}?_method=PUT`,
@@ -73,8 +71,18 @@ export default {
         )
         .then((response) => {
           console.log(response.data);
+          this.setAlert({
+            status: true,
+            color: "success",
+            text: "Berhasil Edit",
+          });
         })
         .catch((error) => {
+          this.setAlert({
+            status: true,
+            color: "error",
+            text: "Gagal Edit",
+          });
           console.log(error.response);
           throw error;
         });
@@ -82,21 +90,22 @@ export default {
     submitPhoto() {
       // console.log(this.$refs.photo.files);
       const formData = new FormData();
-      let file = this.$refs.photo.files[0];
-      console.log(file);
-      formData.append("photo", file);
+      // let file = this.$refs.photo.files[0];
+      // console.log(this.imageFile);
+      formData.append("photo", this.imageFile);
       const config = {
         method: "POST",
         url: `https://demo-api-vue.sanbercloud.com/api/v2/blog/${this.idBlog}/upload-photo`,
-        body: formData,
+        data: formData,
         headers: {
           Authorization: "Bearer " + this.token,
-          "content-type": "multipart/form-data",
+          "content-type": "application/json",
         },
       };
       this.axios(config)
         .then((response) => {
           console.log(response.data);
+          // console.log(this.imageFile);
         })
         .catch((error) => {
           throw error;
