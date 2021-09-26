@@ -14,6 +14,7 @@
       :length="lengthPage"
       :total-visible="perPage"
       color="success"
+      circle
     >
     </v-pagination>
   </v-container>

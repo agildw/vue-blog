@@ -70,12 +70,9 @@ export default {
     },
     submit() {
       const formData = new FormData();
-      // console.log(this.$refs.photo.files);
-      console.log(this.imageFile);
       formData.append("email", this.email);
       formData.append("password", this.password);
       formData.append("name", this.name);
-      console.log(this.name);
       formData.append("photo_profile", this.imageFile);
       // formData.append("photo_profile", this.$refs.photo.files[0]);
 
@@ -85,10 +82,7 @@ export default {
         data: formData,
       };
       this.axios(config)
-        .then((response) => {
-          console.log(response.data);
-          // this.setToken(response.data.access_token);
-
+        .then(() => {
           this.setAlert({
             status: true,
             color: "success",
@@ -102,7 +96,6 @@ export default {
             color: "error",
             text: "Register gagal",
           });
-          console.log(error);
           throw error;
         });
     },

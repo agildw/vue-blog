@@ -63,7 +63,6 @@ export default {
       };
       this.axios(config)
         .then((response) => {
-          console.log(response.data);
           this.setToken(response.data.access_token);
 
           this.setAlert({

@@ -137,7 +137,6 @@ export default {
         .then(() => {
           this.setToken("");
           this.setUser([]);
-          // this.guest = true;
           this.setAlert({
             status: true,
             color: "success",
