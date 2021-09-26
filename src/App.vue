@@ -81,14 +81,12 @@
         </v-slide-y-transition>
       </v-container>
     </v-main>
-    <v-footer app> MyBlog - Kelompok 18 </v-footer>
+    <v-footer app> MyBlog - Agil Dwiki Yudistira </v-footer>
   </v-app>
 </template>
 
 <script>
 import { mapActions, mapGetters } from "vuex";
-// import Dialog from "./components/Dialog.vue";
-// import Dialog from "./components/Dialog.vue";
 
 export default {
   name: "App",
@@ -97,12 +95,8 @@ export default {
     menus: [
       { title: "Home", icon: "mdi-home", route: "/" },
       { title: "Blogs", icon: "mdi-note", route: "/blogs" },
-      // { title: "New Blog", icon: "mdi-post", route: "/create" },
     ],
     baseUrl: "https://demo-api-vue.sanbercloud.com",
-    // guest: true,
-    // snackbarStatus: false,
-    // snackbarText: "Anda berhasi login",
   }),
   components: {
     Alert: () => import("./components/Alert.vue"),
