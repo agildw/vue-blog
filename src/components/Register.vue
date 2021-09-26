@@ -14,6 +14,7 @@
           truncate-length="15"
           v-model="imageFile"
           color="success"
+          label="Masukkan foto"
         ></v-file-input>
         <!-- <input type="file" name="photo" ref="photo" style="margin: 10px 0" /> -->
         <v-text-field

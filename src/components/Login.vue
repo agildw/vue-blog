@@ -64,7 +64,8 @@ export default {
       this.axios(config)
         .then((response) => {
           this.setToken(response.data.access_token);
-
+          // this.$forceUpdate();
+          location.reload();
           this.setAlert({
             status: true,
             color: "success",

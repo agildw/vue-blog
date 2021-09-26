@@ -6,7 +6,8 @@ import store from '@/store';
 
 Vue.use(VueRouter)
 
-const authStatus = store.getters['auth/guest'];
+// const authStatus = store.getters['auth/guest'];
+const authUser = store.getters['auth/token'];
 
 const routes = [
   {
@@ -28,7 +29,7 @@ const routes = [
     path: '/create', name: 'post',
     component: () => import('../views/Post.vue'),
     beforeEnter: (to, from, next) => {
-      if (authStatus === true) {
+      if (authUser == '') {
         alert('Silahkan login dahulu')
         next({ name: 'Home' });
       } else {
@@ -41,7 +42,7 @@ const routes = [
     name: 'EditBlog',
     component: () => import('../views/EditBlog.vue'),
     beforeEnter: (to, from, next) => {
-      if (authStatus === true) {
+      if (authUser == '') {
         alert('Silahkan login dahulu')
         next({ name: 'Home' });
       } else {
